@@ -107,6 +107,12 @@
     word-break: break-word;
 }
 
+.comment-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .comment-item__like {
     display: inline-flex;
     align-items: center;
@@ -124,4 +130,28 @@
 .comment-item__like:hover {
     border-color: #ff6b6b;
     color: #ff6b6b;
+}
+
+.comment-item__delete {
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    color: #999;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.comment-item__delete:hover {
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+    background: #fff1f0;
+}
+
+.comment-empty {
+    padding: 40px 0;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
 }

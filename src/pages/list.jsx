@@ -43,6 +43,11 @@ function List(){
         ))
     }
 
+    // 删除评论:filter 过滤掉指定 id,返回新数组触发视图更新
+    const handleDelete = (id) => {
+        setComments(comments.filter(c => c.id !== id))
+    }
+
     // 发布评论:追加新评论到列表头部
     const handleAdd = () => {
         const text = input.trim()
@@ -75,26 +80,38 @@ function List(){
             </div>
 
             {/* 列表区 */}
-            <ul className="comment-items">
-                {comments.map(c => (
-                    <li className="comment-item" key={c.id}>
-                        <img className="comment-item__avatar" src={c.avatar} alt={c.name} />
-                        <div className="comment-item__body">
-                            <div className="comment-item__head">
-                                <span className="comment-item__name">{c.name}</span>
-                                <span className="comment-item__time">{c.time}</span>
+            {comments.length === 0 ? (
+                <p className="comment-empty">暂无评论,快来抢沙发~</p>
+            ) : (
+                <ul className="comment-items">
+                    {comments.map(c => (
+                        <li className="comment-item" key={c.id}>
+                            <img className="comment-item__avatar" src={c.avatar} alt={c.name} />
+                            <div className="comment-item__body">
+                                <div className="comment-item__head">
+                                    <span className="comment-item__name">{c.name}</span>
+                                    <span className="comment-item__time">{c.time}</span>
+                                </div>
+                                <p className="comment-item__content">{c.content}</p>
+                                <div className="comment-item__actions">
+                                    <button
+                                        className="comment-item__like"
+                                        onClick={() => handleLike(c.id)}
+                                    >
+                                        ❤ {c.likes}
+                                    </button>
+                                    <button
+                                        className="comment-item__delete"
+                                        onClick={() => handleDelete(c.id)}
+                                    >
+                                        删除
+                                    </button>
+                                </div>
                             </div>
-                            <p className="comment-item__content">{c.content}</p>
-                            <button
-                                className="comment-item__like"
-                                onClick={() => handleLike(c.id)}
-                            >
-                                ❤ {c.likes}
-                            </button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     )
 }
