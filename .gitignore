@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ============ Python / 后端 ============
+__pycache__/
+*.py[cod]
+backend/.venv/
+backend/storage/
+backend/reports/
+backend/dataset/
+*.db
+*.db-wal
+*.db-shm
+backend/.env

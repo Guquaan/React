@@ -59,4 +59,26 @@ function ClassStyle(){
     )
 }
 
+// 表单受控绑定，这样子实现数据劫持
+function Form(){
+    const [input, setInput] = useState('')
+    return (
+        <div>
+            <input type="text" value={input} onChange={(e)=>setInput(e.target.value)}/>
+        </div>
+    )
+}
+
+// React中获取DOM，需要使用useRef钩子
+function GetDOM(){
+    const input = useRef(null)
+    return (
+        <div>
+            <input ref={input} type="text" />
+            <button onClick={()=>console.log(input.current)}>获取输入框焦点</button>
+        </div>
+    )
+}
+
+
 export { Num, Object,ClassStyle };

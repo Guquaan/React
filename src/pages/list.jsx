@@ -30,6 +30,11 @@ const initialComments = [
     }
 ]
 
+// 高亮数据
+const tabType = [
+    {name:'new',title:'最新'},
+    {name:'hot',title:'热评'}
+]
 function List(){
     // 评论数据
     const [comments, setComments] = useState(initialComments)
@@ -48,7 +53,7 @@ function List(){
         setComments(comments.filter(c => c.id !== id))
     }
 
-    // 发布评论:追加新评论到列表头部
+    // 发布评论:追加新评论到列表头部，直接使用结构赋值，触发视图更新
     const handleAdd = () => {
         const text = input.trim()
         if (!text) return
@@ -66,6 +71,12 @@ function List(){
 
     return (
         <div className="comment-list">
+            {/**
+             * 1. tab切换功能
+             *  最新 / 热评
+             * 切换的时候显示不一样的高亮
+             * 2. 根据条件控制不一样的高亮效果
+             */}
             <h1 className="comment-list__title">评论 ({comments.length})</h1>
 
             {/* 输入区 */}
