@@ -1,5 +1,5 @@
 /** 原 React 学习笔记页面的容器（保留原有练习代码，不改动其内部实现） */
-import { Num, Object as Obj, ClassStyle } from './teach'
+import { Num, Object as Obj, ClassStyle , Use,Counter} from './teach'
 import List from './list'
 
 export default function Learn({ mode }) {
@@ -14,6 +14,7 @@ export default function Learn({ mode }) {
         </div>
         <div className="card__body">
           <List />
+          
         </div>
       </div>
     )
@@ -31,6 +32,7 @@ export default function Learn({ mode }) {
         <Num />
         <Obj />
         <ClassStyle />
+        <Counter />
       </div>
     </div>
   )
